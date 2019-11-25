@@ -1,0 +1,78 @@
+<?xml version="1.0"?>
+<template
+        format="5"
+        revision="1"
+        name="New Feature"
+        description="Creates a new feature package and basic files">
+
+    <category value="Feature"/>
+    <formfactor value="Mobile"/>
+
+    <parameter
+		id="featureName"
+		name="Feature Name"
+		type="string"
+		constraints="class|unique|nonempty"
+		default="MyFeature"
+		help="The name of the feature such as Credentials"/>
+	
+	<parameter
+		id="fragmentName"
+		name="Fragment name"
+		type="string"
+		constraints="class|unique|nonempty"
+		suggest="${featureName}Fragment"
+		default="MyFeatureFragment"
+		help="The name of the fragment class"/>
+
+	<parameter
+        id="layoutName"
+        name="Fragment Layout Name"
+        type="string"
+        constraints="layout|nonempty|unique"
+        default="blank_fragment"
+        suggest="fragment_${classToResource(fragmentName)}"
+        help="The name of the layout to create" />
+
+	<parameter
+		id="bindingName"
+		name="Binding Class Name"
+		type="string"
+		constraints="class|unique|nonempty"
+		suggest="${underscoreToCamelCase(layoutName)}Binding"
+		default="FragmentMyFeatureBinding"
+		visibility="false" />
+
+	<parameter
+		id="viewModelClassName"
+		name="ViewModel class name"
+		type="string"
+		constraints="class|unique|nonempty"
+		suggest="${featureName}ViewModel"
+		default="MyFeatureViewModel"
+		help="The name of the view model class"
+		visibility="false"/>
+    <!-- <parameter
+            id="withRepository"
+            name="With Repository"
+            type="boolean"
+            default="true"
+            help="If true, the repository will be created for this feature"/> -->
+
+    <!-- <parameter
+            id="withDataBinding"
+            name="Use Data Binding"
+            type="boolean"
+            default="true"
+            help="If true, the layouts will use data binding"/> -->
+
+    <!-- 128x128 thumbnails relative to template.xml -->
+    <thumbs>
+        <!-- default thumbnail is required -->
+        <thumb>template_basic_activity.png</thumb>
+    </thumbs>
+
+    <globals file="globals.xml.ftl"/>
+    <execute file="recipe.xml.ftl"/>
+
+</template>
