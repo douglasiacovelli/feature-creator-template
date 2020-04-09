@@ -9,9 +9,16 @@ It creates:
 
 ## Getting started
 
-### 1. Add the folder **Feature** to:
 
-Mac:
+### 1. Create symlink of the folder Feature to the Android Studio plugins folder
+
+Navigate to the **root of this repo** and paste this command if you're on mac:
+
+`ln -s "$(pwd)/Feature" /Applications/Android\ Studio.app/Contents/plugins/android/lib/templates/other`
+
+#### Or just copy it manually to
+
+Mac/Linux:
 
 `<Android Studio Path>/Contents/plugins/android/lib/templates/other/`
  
