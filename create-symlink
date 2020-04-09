@@ -1,0 +1,23 @@
+#!/bin/sh
+
+createSymlink() {
+  studioDefaultPath="/Applications/Android Studio.app/"
+  printf "Android Studio application path [%s]: " "$studioDefaultPath"
+
+  # disable -r check because we want to allow interpreting backslashes
+  # shellcheck disable=SC2162
+  read studioPath
+
+  if [ -z "${studioPath}" ]; then
+    studioPath=$studioDefaultPath
+  fi
+
+  echo "Creating symbolic link in ${studioPath}Contents/plugins/android/lib/templates/other ..."
+
+  ln -s "$(pwd)/Feature" "${studioPath}Contents/plugins/android/lib/templates/other"
+
+  echo "Done!"
+  echo ""
+}
+
+createSymlink
