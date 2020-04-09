@@ -5,19 +5,22 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.viewModels
-import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.fragment.app.Fragment
+import br.com.revelo.core.extensions.inflateDataBinding
+import ${applicationPackage}.R
+import ${applicationPackage}.databinding.${bindingName}
+import ${escapeKotlinIdentifiers(packageName)}.di.Dagger${featureName}Component
 import br.com.revelo.candidates.appComponent
 import javax.inject.Inject
+import br.com.revelo.core.R as RCore
 
 class ${fragmentName} : Fragment() {
 
     @Inject
     lateinit var viewModelFactory: ViewModelProvider.Factory
-    lateinit var dataBinding: ${bindingName}
+    private var dataBinding: ${bindingName}? = null
     private val viewModel: ${viewModelClassName} by viewModels { viewModelFactory }
 
     override fun onAttach(context: Context) {
@@ -37,12 +40,14 @@ class ${fragmentName} : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        dataBinding = DataBindingUtil.inflate(inflater, R.layout.${layoutName}, container, false)
-        return dataBinding.root
+        dataBinding = inflateDataBinding(inflater, R.layout.${layoutName}, container)
+        dataBinding!!.vm = viewModel
+        return dataBinding!!.root
     }
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        setupToolbar()
         setupObservers()
     }
 
@@ -50,7 +55,8 @@ class ${fragmentName} : Fragment() {
         // Listen to your ViewModel variables
     }
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
+    private fun setupToolbar() {
+        dataBinding?.toolbar?.setNavigationIcon(RCore.drawable.ic_arrow_back)
+        dataBinding?.toolbar?.setNavigationOnClickListener { activity?.onBackPressed() }
     }
 }

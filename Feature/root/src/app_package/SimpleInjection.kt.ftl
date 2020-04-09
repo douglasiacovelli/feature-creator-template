@@ -1,6 +1,8 @@
 package ${escapeKotlinIdentifiers(packageName)}.di
 
 import androidx.lifecycle.ViewModel
+import ${escapeKotlinIdentifiers(packageName)}.presentation.${viewModelClassName}
+import ${escapeKotlinIdentifiers(packageName)}.presentation.${fragmentName}
 import br.com.revelo.candidates.di.AppComponent
 import br.com.revelo.core.di.FragmentScope
 import br.com.revelo.core.di.ViewModelKey
