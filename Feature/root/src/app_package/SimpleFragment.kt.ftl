@@ -51,6 +51,11 @@ class ${fragmentName} : Fragment() {
         setupObservers()
     }
 
+    override fun onDestroyView() {
+        dataBinding = null
+        super.onDestroyView()
+    }
+
     private fun setupObservers() {
         // Listen to your ViewModel variables
     }
