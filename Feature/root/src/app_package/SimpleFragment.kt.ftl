@@ -8,13 +8,10 @@ import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.ViewModelProvider
 import androidx.fragment.app.Fragment
-import br.com.revelo.core.extensions.inflateDataBinding
 import ${applicationPackage}.R
 import ${applicationPackage}.databinding.${bindingName}
 import ${escapeKotlinIdentifiers(packageName)}.di.Dagger${featureName}Component
-import br.com.revelo.candidates.appComponent
 import javax.inject.Inject
-import br.com.revelo.core.R as RCore
 
 class ${fragmentName} : Fragment() {
 
@@ -30,7 +27,6 @@ class ${fragmentName} : Fragment() {
 
     private fun inject() {
         Dagger${featureName}Component.builder()
-            .appComponent(appComponent())
             .build()
             .inject(this)
     }
@@ -40,14 +36,16 @@ class ${fragmentName} : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        dataBinding = inflateDataBinding(inflater, R.layout.${layoutName}, container)
-        dataBinding!!.vm = viewModel
+        dataBinding = DataBindingUtil.inflate(inflater, R.layout.${layoutName}, container, false)
+        dataBinding!!.apply {
+            lifecycleOwner = this
+            vm = viewModel
+        }
         return dataBinding!!.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        setupToolbar()
         setupObservers()
     }
 
@@ -58,10 +56,5 @@ class ${fragmentName} : Fragment() {
 
     private fun setupObservers() {
         // Listen to your ViewModel variables
-    }
-
-    private fun setupToolbar() {
-        dataBinding?.toolbar?.setNavigationIcon(RCore.drawable.ic_arrow_back)
-        dataBinding?.toolbar?.setNavigationOnClickListener { activity?.onBackPressed() }
     }
 }

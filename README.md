@@ -10,13 +10,7 @@ It creates:
 ## Getting started
 
 
-### 1. Create symlink of the folder Feature to the Android Studio plugins folder
-
-Navigate to the **root of this repo** and paste this command if you're on mac:
-
-`ln -s "$(pwd)/Feature" /Applications/Android\ Studio.app/Contents/plugins/android/lib/templates/other`
-
-#### Or just copy it manually to
+### 1. Copy the folder Feature to
 
 Mac/Linux:
 
@@ -32,3 +26,9 @@ Windows:
 
 ## How to use it
 - Select the folder where you want it to be created and select New -> Feature -> New Feature
+
+## Before using this plugin:
+It's assumed that you will have these classes for the ViewModel binding and the fragment scope.
+[helper_classes/ViewModelModule.kt](helper_classes/ViewModelModule.kt)
+[helper_classes/FragmentScope.kt](helper_classes/FragmentScope.kt)
+
