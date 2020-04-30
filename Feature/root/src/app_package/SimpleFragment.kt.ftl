@@ -38,10 +38,8 @@ class ${fragmentName} : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         dataBinding = DataBindingUtil.inflate(inflater, R.layout.${layoutName}, container, false)
-        dataBinding!!.apply {
-            lifecycleOwner = this
-            vm = viewModel
-        }
+        dataBinding!!.lifecycleOwner = viewLifecycleOwner
+        dataBinding!!.vm = viewModel
         return dataBinding!!.root
     }
 

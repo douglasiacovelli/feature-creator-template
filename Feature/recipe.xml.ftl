@@ -10,7 +10,7 @@
     <instantiate from="root/src/app_package/SimpleFragment.kt.ftl"
                    to="${escapeXmlAttribute(srcOut)}/presentation/${fragmentName}.kt" />
 
-    <instantiate from="root/res/layout/fragment_simple.xml.ftl"
+    <instantiate from="root/res/layout/simple_fragment.xml.ftl"
                    to="${escapeXmlAttribute(resOut)}/layout/${layoutName}.xml" />
 
     <open file="${escapeXmlAttribute(srcOut)}/presentation/${fragmentName}.kt" />
