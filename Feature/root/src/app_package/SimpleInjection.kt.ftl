@@ -10,7 +10,7 @@ import dagger.multibindings.IntoMap
 
 @FragmentScope
 @Component(
-    modules = [${featureName}Module::class]
+    modules = [${featureName}Module::class, ViewModelModule::class]
 )
 interface ${featureName}Component {
     fun inject(fragment: ${fragmentName})

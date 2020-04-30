@@ -29,6 +29,7 @@ Windows:
 
 ## Before using this plugin:
 It's assumed that you will have these classes for the ViewModel binding and the fragment scope.
-[helper_classes/ViewModelModule.kt](helper_classes/ViewModelModule.kt)
+
+[helper_classes/ViewModelModule.kt](helper_classes/ViewModelModule.kt)  
 [helper_classes/FragmentScope.kt](helper_classes/FragmentScope.kt)
 
