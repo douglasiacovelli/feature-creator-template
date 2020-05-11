@@ -9,9 +9,10 @@ It creates:
 
 ## Getting started
 
-### 1. Add the folder **Feature** to:
 
-Mac:
+### 1. Copy the folder Feature to
+
+Mac/Linux:
 
 `<Android Studio Path>/Contents/plugins/android/lib/templates/other/`
  
@@ -25,3 +26,10 @@ Windows:
 
 ## How to use it
 - Select the folder where you want it to be created and select New -> Feature -> New Feature
+
+## Before using this plugin:
+It's assumed that you will have these classes for the ViewModel binding and the fragment scope.
+
+[helper_classes/ViewModelModule.kt](helper_classes/ViewModelModule.kt)  
+[helper_classes/FragmentScope.kt](helper_classes/FragmentScope.kt)
+
